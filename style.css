@@ -1410,45 +1410,91 @@ nav .nav-btn:hover {
   font-size: 0.9rem;
   text-align: center;
 }
-/* ===== MOBILE VIEW (Responsive Nav Fix) ===== */
+/* ===============================
+   ✅ Responsive Navbar (Push Hero Down)
+================================= */
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 25px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: #000; /* black header background */
+  color: #fff;
+  z-index: 1000;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+/* Navigation styling */
+#navMenu {
+  display: flex;
+  gap: 20px;
+  transition: max-height 0.4s ease;
+}
+
+#navMenu a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+#navMenu a:hover {
+  color: #00aaff;
+}
+
+/* Hide hamburger on large screens */
+.hamburger {
+  display: none;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.8rem;
+  cursor: pointer;
+}
+
+/* ✅ Mobile styles */
 @media (max-width: 768px) {
   .hamburger {
     display: block;
   }
 
-  /* Stack header vertically when nav opens */
-  header {
-    flex-direction: column;
-    align-items: flex-start;
-    transition: all 0.3s ease;
-  }
-
   #navMenu {
-    width: 100%;
-    display: none; /* hidden by default */
+    overflow: hidden;
     flex-direction: column;
-    text-align: center;
-    background: var(--bg);
-    box-shadow: none;
+    width: 100%;
+    background: #000;
+    max-height: 0;
+    position: relative;
+    top: 0;
   }
 
-  #navMenu a {
-    display: block;
-    padding: 12px 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  /* When active, nav expands smoothly */
+  #navMenu.active {
+    max-height: 400px; /* enough space for all links */
+    transition: max-height 0.4s ease-in-out;
   }
 
-  /* When nav is open */
-  #navMenu.open {
-    display: flex;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
-  }
-
-  /* Hero stays in flow (no forced margin) */
-  header.open + .hero {
-    margin-top: 0;
+  /* Push hero section down when menu is open */
+  .hero.menu-open {
+    margin-top: 350px; /* pushes hero down */
+    transition: margin-top 0.4s ease-in-out;
   }
 }
+
+/* Ensure hero section starts below fixed header */
+.hero {
+  margin-top: 100px;
+  transition: margin-top 0.4s ease;
+}
+
 
 
 

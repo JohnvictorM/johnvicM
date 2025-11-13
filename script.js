@@ -123,13 +123,16 @@ const observer = new IntersectionObserver((entries) => {
   });
 }, options);
 
-// ✅ Toggle Mobile Menu
 const hamburger = document.getElementById("hamburger");
 const navMenu = document.getElementById("navMenu");
+const hero = document.querySelector(".hero");
 
 hamburger.addEventListener("click", () => {
-  navMenu.classList.toggle("active");
+  const isOpen = navMenu.classList.toggle("active");
+  hero.classList.toggle("menu-open", isOpen);
 });
+
+
 
 
 

@@ -1608,6 +1608,37 @@ nav .nav-btn:hover {
     to { opacity: 1; transform: translateY(0); }
   }
 }
+/* Remove unwanted space above navbar */
+body {
+  margin: 0;
+  padding: 0;
+}
+
+/* Navbar adjustments */
+.nav-glass {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+
+  /* ✅ NEW LINE — ensures no space above */
+  margin-top: 0;
+}
+
+/* Optional: tighter top padding for compact look */
+.nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0.75rem 2.5rem 0.75rem 2rem; /* slightly reduced top/bottom padding */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
 
 
 

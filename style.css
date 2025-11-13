@@ -15,35 +15,38 @@ body {
   transition: background 0.5s ease, color 0.5s ease;
 }
 
-/* ===== HEADER BASE ===== */
 header {
+  position: fixed;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.85);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 25px;
-  background: rgba(0, 0, 0, 0.8);
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 1000;
+  padding: 15px 50px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
+  z-index: 10;
   backdrop-filter: blur(6px);
 }
 
-.logo {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: var(--accent1);
+/* Move nav to right */
+nav {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 12px;       /* space between items */
 }
 
-/* ===== NAVIGATION (Desktop) ===== */
-nav {
-  display: flex;
-  gap: 15px;
+
+.logo {
+  font-weight: 700;
+  color: var(--accent1);
+  letter-spacing: 1px;
 }
 
 nav a {
-  color: #ccc;
   text-decoration: none;
+  margin: 0 12px;
+  color: #ccc;
   font-weight: 500;
   transition: color 0.3s;
 }
@@ -51,50 +54,79 @@ nav a {
 nav a:hover {
   color: var(--accent1);
 }
+/* ✅ HEADER LAYOUT */
+.header {
+  width: 100%;
+  background: #0a0a0a;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 25px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+}
 
-/* ===== HAMBURGER MENU BUTTON ===== */
+.logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  background: linear-gradient(90deg, #ff007f, #00bfff);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
 .hamburger {
-  display: none;
-  font-size: 1.8rem;
   background: none;
   border: none;
-  color: white;
+  font-size: 1.6rem;
+  color: #fff;
   cursor: pointer;
+  z-index: 1100;
 }
 
-/* ===== MOBILE MENU ===== */
-@media (max-width: 768px) {
-  nav {
-    position: fixed;
-    top: 0;
-    left: -250px;
-    width: 220px;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.95);
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 60px 20px;
-    gap: 20px;
-    transition: left 0.4s ease-in-out;
-    z-index: 999;
-  }
-
-  nav a {
-    width: 100%;
-    color: white;
-    font-size: 1rem;
-    padding: 10px 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  }
-
-  nav.active {
-    left: 0; /* slide-in menu */
-  }
-
-  .hamburger {
-    display: block;
-  }
+/* ✅ NAV MENU DROPDOWN */
+#navMenu {
+  display: flex;
+  flex-direction: column;
+  background: #0d0d0d;
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  transition: all 0.4s ease;
 }
+
+#navMenu.active {
+  max-height: 500px;
+  opacity: 1;
+  padding: 15px 0;
+}
+
+#navMenu a {
+  color: #fff;
+  text-decoration: none;
+  padding: 12px 25px;
+  transition: background 0.3s;
+}
+
+#navMenu a:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* ✅ HERO SECTION */
+.hero {
+  margin-top: 80px; /* space for fixed header */
+  transition: margin-top 0.4s ease;
+}
+
+.hero.menu-open {
+  margin-top: 250px; /* pushes content down when menu opens */
+}
+
 
 /* ===== HERO ===== */
 .hero {
@@ -1535,6 +1567,7 @@ header {
   margin-top: 100px;
   transition: margin-top 0.4s ease;
 }
+
 
 
 

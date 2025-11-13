@@ -123,14 +123,15 @@ const observer = new IntersectionObserver((entries) => {
   });
 }, options);
 
-const hamburger = document.getElementById("hamburger");
-const navMenu = document.getElementById("navMenu");
-const hero = document.querySelector(".hero");
+const menuBtn = document.getElementById("menu-btn");
+const menu = document.getElementById("menu");
 
-hamburger.addEventListener("click", () => {
-  const isOpen = navMenu.classList.toggle("active");
-  hero.classList.toggle("menu-open", isOpen);
-});
+if (menuBtn && menu) {
+  menuBtn.addEventListener("click", () => {
+    menu.classList.toggle("show");
+  });
+}
+
 
 
 

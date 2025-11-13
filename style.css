@@ -1483,90 +1483,134 @@ nav .nav-btn:hover {
   font-size: 0.9rem;
   text-align: center;
 }
-/* ===============================
-   ✅ Responsive Navbar (Push Hero Down)
-================================= */
+/* ----------------------------------------
+   ✅ Dark Glassy Navbar (Black Background)
+---------------------------------------- */
+.nav-glass {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.85);  /* Black with slight transparency */
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
 
-header {
+/* ✅ Add right-side breathing room */
+.nav-container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 1rem 2.5rem 1rem 2rem;  /* added extra right padding */
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 25px;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  background: #000; /* black header background */
+}
+
+/* ✅ Logo with gradient text still visible on dark bg */
+.nav-logo {
+  font-size: 1.6rem;
+  font-weight: 700;
+  background: linear-gradient(90deg, #4facfe, #00f2fe);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ✅ White text links for dark theme */
+.nav-links a {
+  text-decoration: none;
+  font-weight: 500;
   color: #fff;
-  z-index: 1000;
+  transition: color 0.3s ease;
 }
 
-.logo {
-  font-size: 1.5rem;
-  font-weight: 600;
+.nav-links a:hover {
+  color: #00f2fe;
 }
 
-/* Navigation styling */
-#navMenu {
-  display: flex;
-  gap: 20px;
-  transition: max-height 0.4s ease;
+/* ✅ Mobile Menu */
+.menu-btn {
+  background: none;
+  border: none;
+  font-size: 1.6rem;
+  color: #fff;
+  cursor: pointer;
+  display: none;
 }
 
-#navMenu a {
-  color: white;
+/* ✅ Mobile Dropdown Menu (dark background) */
+.mobile-menu {
+  display: none;
+  flex-direction: column;
+  background: rgba(0, 0, 0, 0.95);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.mobile-menu a {
+  padding: 1rem 2rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  color: #fff;
   text-decoration: none;
   font-weight: 500;
 }
 
-#navMenu a:hover {
-  color: #00aaff;
+.mobile-menu a:hover {
+  background: rgba(255, 255, 255, 0.1);
 }
 
-/* Hide hamburger on large screens */
-.hamburger {
-  display: none;
+
+/* ✅ Mobile Menu */
+.menu-btn {
   background: none;
   border: none;
-  color: white;
-  font-size: 1.8rem;
+  font-size: 1.4rem;
+  color: #333;
   cursor: pointer;
+  display: none;
 }
 
-/* ✅ Mobile styles */
+.mobile-menu {
+  display: none;
+  flex-direction: column;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.mobile-menu a {
+  padding: 1rem 2rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  color: #333;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.mobile-menu a:hover {
+  background: rgba(0, 114, 255, 0.1);
+}
+
+/* ✅ Responsive Behavior */
 @media (max-width: 768px) {
-  .hamburger {
+  .nav-links {
+    display: none;
+  }
+
+  .menu-btn {
     display: block;
   }
 
-  #navMenu {
-    overflow: hidden;
-    flex-direction: column;
-    width: 100%;
-    background: #000;
-    max-height: 0;
-    position: relative;
-    top: 0;
+  .mobile-menu.show {
+    display: flex;
+    animation: dropdown 0.3s ease forwards;
   }
 
-  /* When active, nav expands smoothly */
-  #navMenu.active {
-    max-height: 400px; /* enough space for all links */
-    transition: max-height 0.4s ease-in-out;
-  }
-
-  /* Push hero section down when menu is open */
-  .hero.menu-open {
-    margin-top: 350px; /* pushes hero down */
-    transition: margin-top 0.4s ease-in-out;
+  @keyframes dropdown {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
   }
 }
 
-/* Ensure hero section starts below fixed header */
-.hero {
-  margin-top: 100px;
-  transition: margin-top 0.4s ease;
-}
+
+
 
 
 
